@@ -11,7 +11,8 @@ class Flat(models.Model):
     e_meter_id = models.CharField(max_length=25, null=True)
     renter_id = models.CharField(blank=True, max_length=25, null=True)
     status = models.CharField(max_length=50)
-    created_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name
