@@ -4,6 +4,8 @@ from rest_framework import status
 from rest_framework.generics import *
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 from .serializers import *
 from .models import *
@@ -17,11 +19,14 @@ from requests import ConnectionError
 # Create your views here.
 
 
+
 def index(request):
     return HttpResponse('Hello, we are in RMS server!')
 
 
 class FlatListView(ListAPIView):
+    authentication_classes = [ SessionAuthentication, BasicAuthentication]
+    permission_classes = [IsAuthenticated]
     queryset = Flat.objects.all()
     serializer_class = FlatSerializer
 
