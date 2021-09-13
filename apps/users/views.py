@@ -59,7 +59,6 @@ class UserList(generics.ListCreateAPIView):
 
     def list(self, request):
         # Note the use of `get_queryset()` instead of `self.queryset`
-
         if self.request.user.user_type == 'admin':
             queryset = self.get_queryset()
             serializer = UserSerializer(queryset, many=True)
@@ -67,15 +66,3 @@ class UserList(generics.ListCreateAPIView):
         else:
             serializer = UserSerializer(self.request.user)
             return Response(serializer.data)
-
-
-
-
-        # @api_view(['GET'])ss
-# def user_list(request):
-#     try:
-#         users = User.objects.all()
-#         serializer = UserSerializer(users, many=True).data
-#         return Response(serializer, status=status.HTTP_200_OK)
-#     except:
-#         return Response(status=status.HTTP_400_BAD_REQUEST)
