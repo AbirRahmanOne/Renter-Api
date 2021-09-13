@@ -5,10 +5,12 @@ from django.contrib.auth import login
 
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, status
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import UserSerializer, RegisterSerializer
 from django.views.decorators.debug import sensitive_post_parameters
+from .models import *
 
 
 def index(request):
@@ -48,3 +50,19 @@ class UserAPI(generics.RetrieveAPIView):
 
     def get_object(self):
         return self.request.user
+
+
+class UserList(generics.ListCreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def list(self, request):
+        # Note the use of `get_queryset()` instead of `self.queryset`
+        if self.request.user.user_type == 'admin':
+            queryset = self.get_queryset()
+            serializer = UserSerializer(queryset, many=True)
+            return Response(serializer.data)
+        else:
+            serializer = UserSerializer(self.request.user)
+            return Response(serializer.data)

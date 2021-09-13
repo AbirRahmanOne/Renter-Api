@@ -42,9 +42,8 @@ INSTALLED_APPS = [
     'api',
     'apps.users',
     'rest_framework',
-    'knox'
-    'rest_framework_simplejwt',
 
+    'rest_framework_simplejwt',
 
 ]
 
