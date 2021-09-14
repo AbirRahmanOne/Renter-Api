@@ -6,8 +6,8 @@ from . import views
 
 urlpatterns = [
     #path('', views.index, name='name'),
-    path('api/register', RegisterUserApi.as_view(),  name='register'),
-    path('api/admin', UserAPI.as_view(), name='admin'),
-    path('api/admins', UserList.as_view(), name='admin-list')
+    path('register', RegisterUserApi.as_view(),  name='register'),
+    path('admin', UserAPI.as_view(), name='admin'),
+    path('admins', UserList.as_view(), name='admin-list')
 
 ]
