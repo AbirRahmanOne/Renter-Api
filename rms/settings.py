@@ -42,6 +42,8 @@ INSTALLED_APPS = [
 
     'apps.users',
     'apps.flats',
+    'apps.renters',
+
     'rest_framework',
 
     'rest_framework_simplejwt',

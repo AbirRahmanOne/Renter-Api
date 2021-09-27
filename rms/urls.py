@@ -25,6 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('apps.flats.urls')),
     path('api/', include('apps.users.urls')),
+    path('api/', include('apps.renters.urls')),
 
     path('oauth/token', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('oauth/token/refresh', TokenRefreshView.as_view(), name='token_refresh'),
