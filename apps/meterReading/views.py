@@ -9,7 +9,7 @@ from apps.users.permissions import IsAdmin, IsModerator
 from .models import *
 
 
-class RenterListAPIView(ListAPIView):
+class MeterReadingListAPIView(ListAPIView):
     permission_classes = [IsAuthenticated | IsAdmin | IsModerator]
     queryset = MeterReading.objects.all()
     serializer_class = MeterReadingSerializer
@@ -24,23 +24,20 @@ class RenterListAPIView(ListAPIView):
     #     return MeterReading.objects.filter(flat=value)
 
 
-
-
-
-class RenterCreateAPIView(CreateAPIView):
+class MeterReadingCreateAPIView(CreateAPIView):
     permission_classes = [IsAuthenticated & IsAdmin]
     queryset = MeterReading.objects.all()
     serializer_class = MeterReadingSerializer
 
 
-class RenterRetrieveUpdateAPIView(RetrieveUpdateAPIView):
+class MeterReadingRetrieveUpdateAPIView(RetrieveUpdateAPIView):
     permission_classes = [IsAuthenticated & IsAdmin]
     queryset = MeterReading.objects.all()
     serializer_class = MeterReadingSerializer
 
 
 # This is testing purpose will be deleted in future
-class RenterDeleteAPIView(DestroyAPIView):
+class MeterReadingDeleteAPIView(DestroyAPIView):
     permission_classes = [IsAuthenticated & IsAdmin]
     queryset = MeterReading.objects.all()
     serializer_class = MeterReadingSerializer

@@ -6,8 +6,8 @@ app_name = 'meterReading'
 
 urlpatterns = [
 
-    path('meter-reading', RenterListAPIView.as_view(), name='meter_list'),
-    path('meter-reading/<int:pk>', RenterRetrieveUpdateAPIView.as_view(), name='meter_reading_info'),
-    path('meter-reading/create', RenterCreateAPIView.as_view(), name='meter_reading_create'),
-    path('meter-reading/delete/<int:pk>', RenterDeleteAPIView.as_view(), name='meter_reading_delete'),
+    path('', MeterReadingListAPIView.as_view(), name='meter_reading_list'),
+    path('<int:pk>', MeterReadingRetrieveUpdateAPIView.as_view(), name='meter_reading_info'),
+    path('create', MeterReadingCreateAPIView.as_view(), name='meter_reading_create'),
+    path('delete/<int:pk>', MeterReadingDeleteAPIView.as_view(), name='meter_reading_delete'),
 ]
