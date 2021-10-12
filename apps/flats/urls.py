@@ -4,6 +4,8 @@ from . import views
 
 from .views import FlatListAPIView, FlatRetrieveUpdateAPIView, FlatDeleteAPIView, FlatCreateAPIView
 
+app_name = 'flats'
+
 urlpatterns = [
 
     path('flats', FlatListAPIView.as_view(), name='flat_list'),

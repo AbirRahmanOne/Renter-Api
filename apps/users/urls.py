@@ -4,6 +4,8 @@ from django.urls import path
 from . views import *
 from . import views
 
+app_name = 'users'
+
 urlpatterns = [
     #path('', views.index, name='name'),
     path('register', RegisterUserApi.as_view(),  name='register'),

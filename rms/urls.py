@@ -20,12 +20,22 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 
+#reuse DRY
+api_patterns = [
+    path('users/',   include('apps.users.urls',   namespace='users')),
+    path('flats/',   include('apps.flats.urls',   namespace='flats')),
+    path('renters/', include('apps.renters.urls',  namespace='renters')),
+    path('meter_reading/', include('apps.meterReading.urls', namespace='meter_reading'))
+]
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('apps.flats.urls')),
-    path('api/', include('apps.users.urls')),
-    path('api/', include('apps.renters.urls')),
+
+    path(
+        "api/",
+        include(arg=(api_patterns, "rms"), namespace="api"),
+    ),
 
     path('oauth/token', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('oauth/token/refresh', TokenRefreshView.as_view(), name='token_refresh'),
