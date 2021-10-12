@@ -43,9 +43,10 @@ INSTALLED_APPS = [
     'apps.users',
     'apps.flats',
     'apps.renters',
+    'apps.meterReading',
 
     'rest_framework',
-
+    'django_filters',
     'rest_framework_simplejwt',
 
 ]
@@ -115,6 +116,11 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
+
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend'
+
+    ]
 
 }
 
